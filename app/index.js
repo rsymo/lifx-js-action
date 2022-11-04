@@ -18,26 +18,26 @@ async function run()
         try {
             core.notice("calling our action");
 
-
             const endpoint ='https://api.lifx.com/v1/lights/'+LIFX_BULB_ID;
-            let response = await axios.post({
-              baseURL: endpoint,
-              url: '/state',
-              //method:'post',
-              headers: {
-                'Bearer': LIFX_TOKEN ,
-                'Content-type': 'application/json',
-                'X-ClientTraceId': uuidv4().toString()
-              },
-              data: [{
+            const axiosObj = axios.create({
+                baseURL: endpoint,
+                timeout: 1000,
+                headers: {'Bearer': LIFX_TOKEN ,
+                'Content-type': 'application/json'}
+            });
+
+
+            axiosObj.post('/state',{
                 'power':'on',
                 'brightness': '1.0',
                  'color': COLOUR,
                  'fast': true
-              }],
-              responseType: 'json'
-            });
-
+              }).then(function (response) {
+                console.log(response);
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
 
 
 
