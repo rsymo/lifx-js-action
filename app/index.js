@@ -20,10 +20,10 @@ async function run()
 
 
             const endpoint ='https://api.lifx.com/v1/lights/'+LIFX_BULB_ID;
-            let response = await axios({
+            let response = await axios.post({
               baseURL: endpoint,
               url: '/state',
-              method:'post',
+              //method:'post',
               headers: {
                 'Bearer': LIFX_TOKEN ,
                 'Content-type': 'application/json',
