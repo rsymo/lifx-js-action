@@ -1,5 +1,18 @@
 name: "lifx js action"
 description: "A build light for a GitHub repo using a LIFX bulb and GitHub Actions"
+
+inputs:
+  LIFX_BULB_ID: 
+    description: "bulb id"
+    required: true
+  LIFX_TOKEN:
+    description: "token to use the LIFX API"
+    required: true
+  COLOUR:
+    description: "the colour to change the bulb"
+    required: true
+    default: blue 
+
 runs:
   using: node16
-  main: index.js
+  main: app/index.js
