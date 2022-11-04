@@ -1,0 +1,5 @@
+name: "lifx js action"
+description: "A build light for a GitHub repo using a LIFX bulb and GitHub Actions"
+runs:
+  using: node16
+  main: index.js
