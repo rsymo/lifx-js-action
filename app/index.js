@@ -18,25 +18,29 @@ async function run()
         try {
             core.notice("calling our action");
 
-            const endpoint ='https://api.lifx.com/v1/lights/'+LIFX_BULB_ID;
-            const axiosObj = axios.create({
-                baseURL: endpoint,
-                timeout: 1000,
-                headers: {'Authorization': 'Bearer '+LIFX_TOKEN ,
-                'Content-type': 'application/json'}
-            });
-
-
-            axiosObj.post('/state',{
-                'power':'on',
-                'brightness': '1.0',
-                 'color': COLOUR,
-                 'fast': true
-              }).then(function (response) {
-                console.log(response);
+            const options = {
+              method: 'PUT',
+              url: 'https://api.lifx.com/v1/lights/'+LIFX_BULB_ID+'/state',
+              headers: {
+                accept: 'text/plain',
+                'content-type': 'application/json',
+                Authorization: 'Bearer '+LIFX_TOKEN
+              },
+              data: {
+                power: 'on',
+                color: COLOUR,
+                brightness: 1.0,
+                fast: true
+              }
+            };
+            
+            axios
+              .request(options)
+              .then(function (response) {
+                console.log(response.data);
               })
               .catch(function (error) {
-                console.log(error);
+                console.error(error);
               });
 
 
