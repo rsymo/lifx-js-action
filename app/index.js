@@ -22,7 +22,7 @@ async function run()
             const axiosObj = axios.create({
                 baseURL: endpoint,
                 timeout: 1000,
-                headers: {'Bearer': LIFX_TOKEN ,
+                headers: {'Authorization': LIFX_TOKEN ,
                 'Content-type': 'application/json'}
             });
 
