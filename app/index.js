@@ -16,37 +16,69 @@ let COLOUR = core.getInput('COLOUR')
 async function run()
 {
         try {
-            core.notice("calling our action");
-            let STATUS = 'on';
-            if (COLOUR=='black')
-            STATUS='off';
-
-            const options = {
-              method: 'PUT',
-              url: 'https://api.lifx.com/v1/lights/'+LIFX_BULB_ID+'/state',
-              headers: {
-                accept: 'text/plain',
-                'content-type': 'application/json',
-                Authorization: 'Bearer '+LIFX_TOKEN
-              },
-              data: {
-                power: STATUS,
-                color: COLOUR,
-                brightness: 1.0,
-                fast: true
-              }
-            };
             
-            axios
-              .request(options)
-              .then(function (response) {
-                console.log(response.data);
-              })
-              .catch(function (error) {
-                console.error(error);
-              });
+            if (COLOUR=='black')
+            {
+                
+                core.notice("Turn off the light");
+                                                       
+                const options = {
+                  method: 'PUT',
+                  url: 'https://api.lifx.com/v1/lights/'+LIFX_BULB_ID+'/state',
+                  headers: {
+                    accept: 'text/plain',
+                    'content-type': 'application/json',
+                    Authorization: 'Bearer '+LIFX_TOKEN
+                  },
+                  data: {
+                    power: 'off',
+                  }
+                };
+                
+                axios
+                  .request(options)
+                  .then(function (response) {
+                    console.log(response.data);
+                  })
+                  .catch(function (error) {
+                    console.error(error);
+                  });
 
 
+              } else {
+            
+                core.notice("Set the light colour");
+            
+            
+                let STATUS = 'on';
+                
+                const options = {
+                  method: 'PUT',
+                  url: 'https://api.lifx.com/v1/lights/'+LIFX_BULB_ID+'/state',
+                  headers: {
+                    accept: 'text/plain',
+                    'content-type': 'application/json',
+                    Authorization: 'Bearer '+LIFX_TOKEN
+                  },
+                  data: {
+                    power: STATUS,
+                    color: COLOUR,
+                    brightness: 1.0,
+                    fast: true
+                  }
+                };
+                
+                axios
+                  .request(options)
+                  .then(function (response) {
+                    console.log(response.data);
+                  })
+                  .catch(function (error) {
+                    console.error(error);
+                  });
+
+              }
+        
 
         } catch (error) {
             core.setFailed(error.message);
