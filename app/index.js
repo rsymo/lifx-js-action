@@ -17,6 +17,9 @@ async function run()
 {
         try {
             core.notice("calling our action");
+            let STATUS = 'on';
+            if (COLOUR=='black')
+            STATUS='off';
 
             const options = {
               method: 'PUT',
@@ -27,7 +30,7 @@ async function run()
                 Authorization: 'Bearer '+LIFX_TOKEN
               },
               data: {
-                power: 'on',
+                power: STATUS,
                 color: COLOUR,
                 brightness: 1.0,
                 fast: true
