@@ -16,7 +16,7 @@ async function run()
             core.notice("calling our action");
 
 
-            const baseURL ='https://api.lifx.com/v1/lights/'+LIFX_BULB_ID;
+            const endpoint ='https://api.lifx.com/v1/lights/'+LIFX_BULB_ID;
             let response = await axios({
               baseURL: endpoint,
               url: '/state',
