@@ -1,6 +1,9 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+// library to make REST api calls
 const axios = require('axios').default;
+const { v4: uuidv4 } = require('uuid');
+
 
 let LIFX_BULB_ID = core.getInput('LIFX_BULB_ID')
 let LIFX_TOKEN = core.getInput('LIFX_TOKEN')
@@ -24,6 +27,7 @@ async function run()
               headers: {
                 'Bearer': LIFX_TOKEN ,
                 'Content-type': 'application/json',
+                'X-ClientTraceId': uuidv4().toString()
               },
               data: [{
                 'power':'on',
