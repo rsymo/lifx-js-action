@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "build": "ncc build app/index.js -o dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,5 +24,8 @@
     "@actions/github": "^9.1.0",
     "axios": "^1.15.0",
     "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.38.4"
   }
 }

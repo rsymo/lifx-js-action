@@ -15,4 +15,4 @@ inputs:
 
 runs:
   using: node20
-  main: app/index.js
+  main: dist/index.js
