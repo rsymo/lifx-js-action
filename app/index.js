@@ -1,8 +1,8 @@
-const core = require('@actions/core');
-const github = require('@actions/github');
+import * as core from '@actions/core';
+import * as github from '@actions/github';
 // library to make REST api calls
-const axios = require('axios');
-const { v4: uuidv4 } = require('uuid');
+import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 
 
 let LIFX_BULB_ID = core.getInput('LIFX_BULB_ID')
