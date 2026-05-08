@@ -22,7 +22,7 @@
   "dependencies": {
     "@actions/core": "^3.0.0",
     "@actions/github": "^9.1.0",
-    "axios": "^1.15.0",
+    "axios": "^1.15.2",
     "uuid": "^13.0.0"
   },
   "devDependencies": {
