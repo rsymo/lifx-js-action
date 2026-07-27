@@ -14,7 +14,7 @@ A GitHub Action that controls a [LIFX](https://www.lifx.com/) smart bulb, turnin
 
 ```yaml
 - name: Set build light
-  uses: rsymo/lifx-js-action@main
+  uses: rsymo/lifx-js-action@v1
   with:
     LIFX_BULB_ID: ${{ secrets.LIFX_BULB_ID }}
     LIFX_TOKEN: ${{ secrets.LIFX_TOKEN }}
@@ -38,7 +38,7 @@ jobs:
 
       - name: Build succeeded
         if: success()
-        uses: rsymo/lifx-js-action@main
+        uses: rsymo/lifx-js-action@v1
         with:
           LIFX_BULB_ID: ${{ secrets.LIFX_BULB_ID }}
           LIFX_TOKEN: ${{ secrets.LIFX_TOKEN }}
@@ -46,7 +46,7 @@ jobs:
 
       - name: Build failed
         if: failure()
-        uses: rsymo/lifx-js-action@main
+        uses: rsymo/lifx-js-action@v1
         with:
           LIFX_BULB_ID: ${{ secrets.LIFX_BULB_ID }}
           LIFX_TOKEN: ${{ secrets.LIFX_TOKEN }}
@@ -58,7 +58,7 @@ jobs:
 Set `COLOUR` to `black` to power off the bulb:
 
 ```yaml
-- uses: rsymo/lifx-js-action@main
+- uses: rsymo/lifx-js-action@v1
   with:
     LIFX_BULB_ID: ${{ secrets.LIFX_BULB_ID }}
     LIFX_TOKEN: ${{ secrets.LIFX_TOKEN }}
